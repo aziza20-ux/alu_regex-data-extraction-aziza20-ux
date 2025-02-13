@@ -4,20 +4,20 @@
 import re
 #the dictionary to hold regex rules
 patterns = {
-    "email": r'[a-zA-Z0-9.%_+]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}',
+    "email": r'[a-zA-Z0-9.%_+]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}',
     "url": r'https?://[^\s/$.?#].[^\s]*',
-    "phonenumber": r'\(?\d{3}\)?[\s\-.]?\d{3}[\s\-.]?\d{4}',
+    "phonenber": r'\(?\d{3}\)?[\s\-.]?\d{3}[\s\-.]?\d{4}',
     "creditcard":r'\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}'
 
- }
+ } 
  #the function to apply regex rules on the text and extract the desired datatypes
 def data_validator(text):
    for key, value in patterns.items():
      extracted =  re.findall(value, text, re.MULTILINE)
      print(f"Your {key} is {extracted} you did it!!!!")
-# sample text
+# a text to test the data_validator
 if __name__ == "__main__":
-   sampletext = """
+   text = """
    user@example.com
    firstname.lastname@company.co.uk
    https://www.example.comLinks to an external site.
@@ -29,4 +29,4 @@ if __name__ == "__main__":
    1234-5678-9012-3456
    """
    #the call of function data_validator
-   data_validator(sampletext)
+   data_validator(text)
